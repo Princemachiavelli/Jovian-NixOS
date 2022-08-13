@@ -6,12 +6,10 @@
   };
 
   outputs = { self, nixpkgs }:
-  let
-    agenix = system: nixpkgs.legacyPackages.${system}.callPackage ./pkgs/agenix.nix {};
-  in {
+  {
 
-    nixosModules.age = import ./modules;
-    nixosModule = self.nixosModules.age;
+    nixosModules.jovian = import ./modules;
+    nixosModule = self.nixosModules.jovian;
 
     overlay = import ./overlay.nix;
   };
