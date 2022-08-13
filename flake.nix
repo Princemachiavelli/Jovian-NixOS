@@ -13,7 +13,7 @@
     nixosModule = self.nixosModules.jovian;
 
     overlays.jovian = import ./overlay.nix;
-    overlays.default = self.overlays.jovian;
+    overlay = self.overlays.jovian;
   }; 
 
 }
