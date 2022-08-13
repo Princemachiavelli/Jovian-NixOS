@@ -9,7 +9,9 @@ let
   ;
 
   kernelVersion = "5.13.0";
-  vendorVersion = "valve21";
+  vendorVersion = "valve22";
+  githubVersion = "valve22-final2";
+  hash = "sha256-R/AEjEa1fWb9u33Kn8heWhdaGlVnmO5rHX9Cd2LQVZg=";
 in
 buildLinux (args // rec {
   version = "${kernelVersion}-${vendorVersion}";
@@ -65,7 +67,7 @@ buildLinux (args // rec {
   src = fetchFromGitHub {
     owner = "Jovian-Experiments";
     repo = "linux";
-    rev = version;
-    hash = "sha256-R5L698t7hJYRT63aAyLgXHJ1b0UnCwYYjEr2WIly11o=";
+    rev = "${kernelVersion}-${githubVersion}";
+    inherit hash;
   };
 } // (args.argsOverride or { }))
