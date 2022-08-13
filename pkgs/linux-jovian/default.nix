@@ -54,7 +54,8 @@ buildLinux (args // rec {
     # spinlocks to not be inlined as well. Either way, we don't intend to run this
     # kernel as a guest, so this also clears out a whole bunch of
     # virtualization-specific drivers.
-    HYPERVISOR_GUEST = lib.mkForce no;
+    #HYPERVISOR_GUEST = lib.mkForce no;
+    HYPERVISOR_GUEST = yes;
 
     #
     # Fallout from the vendor-set options
