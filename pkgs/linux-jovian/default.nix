@@ -61,8 +61,8 @@ buildLinux (args // rec {
     # Fallout from the vendor-set options
     # -----------------------------------
     #
-    KVM_GUEST = lib.mkForce (option no);
-    MOUSE_PS2_VMMOUSE = lib.mkForce (option no);
+    KVM_GUEST = lib.mkForce (option yes);
+    MOUSE_PS2_VMMOUSE = lib.mkForce (option yes);
   };
 
   src = fetchFromGitHub {
