@@ -32,12 +32,12 @@ let
 in
 stdenv.mkDerivation {
   pname = "gamescope";
-  version = "3.11.28-beta4";
+  version = "3.11.33-jupiter-3.3-2";
   src = fetchFromGitHub {
     owner = "Plagman";
     repo = "gamescope";
-    rev = "refs/tags/3.11.28-beta4";
-    hash = "sha256-3L3bQIPPfScvtN1dduh10dQu/AuTmD4dHNp3JjBIBLA=";
+    rev = "refs/tags/3.11.33-jupiter-3.3-2";
+    hash = "sha256-6/gTsQGZDQPCdmXe5EI9QcT/MkdTf6odsI2/+g/W7Qc=";
   };
 
   buildInputs = [
