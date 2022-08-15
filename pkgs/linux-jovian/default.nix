@@ -1,4 +1,4 @@
-{ lib, fetchFromGitHub, buildLinux, ... } @ args:
+{ lib, fetchFromGitHub, buildLinux, guestSupport ? false, ... } @ args:
 
 let
   inherit (lib)
@@ -18,6 +18,13 @@ buildLinux (args // rec {
 
   # branchVersion needs to be x.y
   extraMeta.branch = versions.majorMinor version;
+
+  kernelPatches = [
+    {
+      name = "set-vm-max-map-count-to-some-giant-value";
+      patch = ./max_map_count.patch;
+    }
+  ];
 
   structuredExtraConfig = with lib.kernel; {
     #
@@ -50,6 +57,12 @@ buildLinux (args // rec {
     # Enabling our ALS, only in jupiter branches at the moment
     LTRF216A = module;
 
+    #
+    # Fallout from the vendor-set options
+    # -----------------------------------
+    #
+    MOUSE_PS2_VMMOUSE = lib.mkForce (option no);
+  } // (if guestSupport then {} else {
     # PARAVIRT options have overhead, even on bare metal boots. They can cause
     # spinlocks to not be inlined as well. Either way, we don't intend to run this
     # kernel as a guest, so this also clears out a whole bunch of
@@ -63,7 +76,7 @@ buildLinux (args // rec {
     #
     KVM_GUEST = lib.mkForce (option yes);
     MOUSE_PS2_VMMOUSE = lib.mkForce (option yes);
-  };
+});
 
   src = fetchFromGitHub {
     owner = "Jovian-Experiments";

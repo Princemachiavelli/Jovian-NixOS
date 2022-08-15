@@ -1,32 +1,23 @@
 {
-  description = "Jupiter/SteamDeck compatible NixOS";
+  description = "NixOS on Steam Deck";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-22.05";
-    flake-utils.url = "github:numtide/flake-utils";
-    #lib-aggregate.url = "github:nix-community/lib-aggregate";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
   };
 
-  outputs = {self, nixpkgs, flake-utils, ... }@inputs:
-  {
-    nixosModules.jovian = import ./modules;
-    nixosModule = self.nixosModules.jovian;
+  outputs = { self, nixpkgs }: let
+    pkgs = import nixpkgs {
+      system = "x86_64-linux";
+      overlays = [
+        self.overlay
+      ];
+    };
+  in {
+    # Minimize diff while making `nix flake check` pass
+    overlay = final: prev: (import ./overlay.nix) final prev;
 
-    overlays.jovian = import ./overlay.nix;
-    overlay = self.overlays.jovian;
-  } // (with flake-utils.lib; eachSystem [ "x86_64-linux" ] (system:
-    let
-      pkgs = import nixpkgs {
-        inherit system;
-        overlays = [ self.overlay ];
-      };
-    in rec {
-      packages = {
-        gamescope = pkgs.gamescope;
-        acp5x-ucm = pkgs.acp5x-ucm;
-        jupiter-fan-control = pkgs.jupiter-fan-control;
-        linux-firmware = pkgs.linux-firmware;
-        linux_jovian = pkgs.linux_jovian;
-      };
-    }));
+    legacyPackages.x86_64-linux = pkgs;
+
+    nixosModules.jovian = import ./modules;
+  };
 }

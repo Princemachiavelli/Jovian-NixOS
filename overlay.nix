@@ -19,9 +19,19 @@ in
       kernelPatches.export-rt-sched-migrate
     ];
   };
-  gamescope = super.callPackage ./pkgs/gamescope {
-    udev = final.systemdMinimal;
+  linuxPackages_jovian_guest = linuxPackagesFor final.linux_jovian_guest;
+  linux_jovian_guest = final.linux_jovian.override {
+    guestSupport = true;
   };
+  gamescope-session = super.callPackage ./pkgs/gamescope-session { };
 
   jupiter-fan-control = final.callPackage ./pkgs/jupiter-fan-control { };
+
+  jupiter-hw-support = final.callPackage ./pkgs/jupiter-hw-support { };
+  steamdeck-hw-theme = final.callPackage ./pkgs/jupiter-hw-support/theme.nix { };
+  steamdeck-firmware = final.callPackage ./pkgs/jupiter-hw-support/firmware.nix { };
+
+  steamdeck-theme = final.callPackage ./pkgs/steamdeck-theme { };
+
+  sdgyrodsu = final.callPackage ./pkgs/sdgyrodsu { };
 }
