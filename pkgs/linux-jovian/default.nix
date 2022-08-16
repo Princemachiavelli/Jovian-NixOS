@@ -67,16 +67,10 @@ buildLinux (args // rec {
     # spinlocks to not be inlined as well. Either way, we don't intend to run this
     # kernel as a guest, so this also clears out a whole bunch of
     # virtualization-specific drivers.
-    #HYPERVISOR_GUEST = lib.mkForce no;
-    HYPERVISOR_GUEST = yes;
+    HYPERVISOR_GUEST = lib.mkForce no;
 
-    #
-    # Fallout from the vendor-set options
-    # -----------------------------------
-    #
-    KVM_GUEST = lib.mkForce (option yes);
-    MOUSE_PS2_VMMOUSE = lib.mkForce (option yes);
-});
+    KVM_GUEST = lib.mkForce (option no);
+  });
 
   src = fetchFromGitHub {
     owner = "Jovian-Experiments";
