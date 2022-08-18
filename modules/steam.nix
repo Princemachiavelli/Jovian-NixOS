@@ -45,6 +45,7 @@ in
             Use `systemctl --user stop steam.target` to stop.
           '';
         };
+        # Network/External Steam Libraries by type (NFS,CIFS), name, location
       };
     };
   };

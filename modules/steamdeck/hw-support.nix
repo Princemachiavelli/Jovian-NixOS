@@ -50,6 +50,9 @@ in
         "sdhci_pci"
         "cqhci"
         "mmc_block"
+        "usb_storage"
+        "usbhid"
+        "xhci_pci"
         # For USB support
         "uas"
       ];
