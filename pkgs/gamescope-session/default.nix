@@ -78,8 +78,13 @@ let
     extraProfile = ''
       export PATH=${dummySudo}/bin:$PATH
     '';
-    extraArgs = "-steamdeck";
+    # param does not exist?
+    #extraArgs = "-steamdeck";
   };
+  # TODO: remove? I think the -steamdeck parameter already gets passed
+  wrappedSteamDeck = writeShellScriptBin "steam" ''
+    ${wrappedSteam}/bin/steam -steamdeck $@
+  '';
 
   binPath = lib.makeBinPath [ wrappedSteam wrappedSteam.run gamescope mangohud ];
 in runCommand "gamescope-session" {

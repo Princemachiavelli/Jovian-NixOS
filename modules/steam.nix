@@ -54,6 +54,9 @@ in
       hardware.opengl.driSupport32Bit = true;
       hardware.pulseaudio.support32Bit = true;
 
+      # gamescope-session testing.
+      environment.systemPackages = with pkgs; [ gamescope-session ];
+
       systemd.user.services."steam" = {
         enable = true;
         serviceConfig = {

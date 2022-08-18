@@ -2,12 +2,13 @@
   description = "NixOS on Steam Deck";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:Princemachiavelli/nixpkgs/unstable-good";
   };
 
   outputs = { self, nixpkgs }: let
     pkgs = import nixpkgs {
       system = "x86_64-linux";
+      allowUnfree = true;
       overlays = [
         self.overlay
       ];
@@ -20,7 +21,8 @@
       #linux-firmware = pkgs.linux-firmware;
       linux_jovian = pkgs.linux_jovian;
       linux_jovian_5_17_guest = pkgs.linux_jovian_5_17_guest;
-      #gamescope-session = pkgs.gamescope-session;
+      gamescope = pkgs.gamescope;
+      gamescope-session = pkgs.gamescope-session;
       #acp5x-ucm = pkgs.acp5x-ucm;
 
       #jupiter-fan-control = pkgs.jupiter-fan-control;
