@@ -39,8 +39,15 @@ in
     (mkIf cfg.enableXorgRotation {
       environment.etc."X11/xorg.conf.d/90-jovian.conf".text = ''
         Section "Monitor"
-          Identifier     "eDP"
-          Option         "Rotate"    "right"
+          Identifier "eDP-1"
+          Option     "Rotate"        "right"
+          Option     "PreferredMode" "720x1280"
+        EndSection
+        
+        Section "InputClass"
+          Identifier   "pointer:Goodix Capacitive TouchScreen"
+          Option       "Transformation Matrix" "0 1 0 -1 0 1 0 0 1"
+          MatchProduct "Goodix"
         EndSection
 
         Section "InputClass"
@@ -52,6 +59,7 @@ in
           # 90° Clock-wise
           Option "CalibrationMatrix" "0 1 0 -1 0 1 0 0 1"
         EndSection
+
       '';
     })
   ];
