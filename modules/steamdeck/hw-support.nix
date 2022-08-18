@@ -44,12 +44,14 @@ in
         # Gamepad
         "usbhid"
       ];
-      boot.initrd.availableKernelModules = [
+      boot.initrd.availableKernelModules = lib.mkForce [
         "nvme"
         "sdhci"
         "sdhci_pci"
         "cqhci"
         "mmc_block"
+        # For USB support
+        "uas"
       ];
     })
     (mkIf (cfg.enableDefaultCmdlineConfig) {
