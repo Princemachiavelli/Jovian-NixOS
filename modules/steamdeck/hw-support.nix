@@ -44,7 +44,7 @@ in
         # Gamepad
         "usbhid"
       ];
-      boot.initrd.availableKernelModules = lib.mkForce [
+      boot.initrd.availableKernelModules = [
         "nvme"
         "sdhci"
         "sdhci_pci"
