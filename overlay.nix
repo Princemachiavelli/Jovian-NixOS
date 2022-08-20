@@ -42,6 +42,8 @@ in
   steamdeck-hw-theme = final.callPackage ./pkgs/jupiter-hw-support/theme.nix { };
   steamdeck-firmware = final.callPackage ./pkgs/jupiter-hw-support/firmware.nix { };
 
+  jovian-controller = final.callPackage ./pkgs/jovian-controller { };
+
   steamdeck-theme = final.callPackage ./pkgs/steamdeck-theme { };
 
   sdgyrodsu = final.callPackage ./pkgs/sdgyrodsu { };

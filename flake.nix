@@ -27,9 +27,10 @@
 
       #jupiter-fan-control = pkgs.jupiter-fan-control;
 
-      #jupiter-hw-support = pkgs.jupiter-hw-support;
+      jupiter-hw-support = pkgs.jupiter-hw-support;
       #steamdeck-hw-theme = pkgs.steamdeck-hw-theme;
-      #steamdeck-firmware = pkgs.steamdeck-firmware;
+      steamdeck-firmware = pkgs.steamdeck-firmware;
+      jovian-controller = pkgs.jovian-controller;
 
       #steamdeck-theme = pkgs.steamdeck-firmware;
 

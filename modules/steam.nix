@@ -55,7 +55,12 @@ in
       hardware.pulseaudio.support32Bit = true;
 
       # gamescope-session testing.
-      environment.systemPackages = with pkgs; [ gamescope-session ];
+      # firmware/biosupdate testing.
+      environment.systemPackages = with pkgs; [ 
+        gamescope-session
+        steamdeck-firmware
+        jovian-controller
+      ];
 
       systemd.user.services."steam" = {
         enable = true;
