@@ -2,11 +2,11 @@
   "nodes": {
     "nixpkgs": {
       "locked": {
-        "lastModified": 1660538590,
-        "narHash": "sha256-9l6vQdEOlVCTyNWV8p5iJ4Z5VMXLtGquviLuYsgFCu0=",
+        "lastModified": 1661029745,
+        "narHash": "sha256-FOebhQtburmMpOzBYeYjuk5W0RGJTWTLb0OBqNzLZPI=",
         "owner": "Princemachiavelli",
         "repo": "nixpkgs",
-        "rev": "7d6d77975677927aa9ba5fd5895eea99107c1858",
+        "rev": "0dce8eea3eae58b27ac74540d51137e6097b952d",
         "type": "github"
       },
       "original": {

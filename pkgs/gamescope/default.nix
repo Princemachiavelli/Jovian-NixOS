@@ -19,7 +19,7 @@
 , udev
 , pixman
 , libinput
-, libseat
+, seatd 
 , xwayland
 , glslang
 
@@ -32,12 +32,12 @@ let
 in
 stdenv.mkDerivation {
   pname = "gamescope";
-  version = "3.11.33-jupiter-3.3-2";
+  version = "3.11.39";
   src = fetchFromGitHub {
     owner = "Plagman";
     repo = "gamescope";
-    rev = "refs/tags/3.11.33-jupiter-3.3-2";
-    hash = "sha256-6/gTsQGZDQPCdmXe5EI9QcT/MkdTf6odsI2/+g/W7Qc=";
+    rev = "refs/tags/3.11.39";
+    hash = "sha256-MpJczFZk0syt/CMwAhA7H+01G8E4syFsJGnzD/RneQQ=";
   };
 
   buildInputs = [
@@ -61,7 +61,7 @@ stdenv.mkDerivation {
     udev
     pixman
     libinput
-    libseat
+    seatd
     xwayland
     xorg.xcbutilwm
     xorg.xcbutilerrors

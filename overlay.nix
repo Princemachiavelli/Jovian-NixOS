@@ -31,7 +31,9 @@ in
     githubVersion = "valve1";
     hash = "sha256-5x3DsN32xf6B0N/kDWvhOAUeMn6L6Ck5tO6725wxm68=";
   };
-  gamescope = super.callPackage ./pkgs/gamescope { };
+  gamescope = super.callPackage ./pkgs/gamescope {
+    wlroots = super.wlroots_0_15;
+  };
   gamescope-session = super.callPackage ./pkgs/gamescope-session { };
 
   jupiter-fan-control = final.callPackage ./pkgs/jupiter-fan-control { };
