@@ -3,9 +3,9 @@ fetchFromGitHub,
 buildLinux,
 guestSupport ? false,
 kernelVersion ? "5.13.0",
-vendorVersion ? "valve22",
-githubVersion ? "valve22-final2",
-hash ? "sha256-R/AEjEa1fWb9u33Kn8heWhdaGlVnmO5rHX9Cd2LQVZg=",
+vendorVersion ? "valve23",
+githubVersion ? "valve23",
+hash ? "sha256-tkclNbKKrd6Aam9y8PFr6y7fepf4/1oOFWvn++ouuc8=",
 ... } @ args:
 
 let

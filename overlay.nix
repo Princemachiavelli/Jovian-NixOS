@@ -47,4 +47,6 @@ in
   steamdeck-theme = final.callPackage ./pkgs/steamdeck-theme { };
 
   sdgyrodsu = final.callPackage ./pkgs/sdgyrodsu { };
+
+  #TODO: add sc-controller with steamdeck support
 }
